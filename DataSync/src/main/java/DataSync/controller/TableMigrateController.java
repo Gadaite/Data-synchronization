@@ -8,10 +8,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -42,7 +39,7 @@ public class TableMigrateController {
 
     @PostMapping("/showTables")
     @ApiOperation("过滤显示所有表")
-    public Result<List<TableInformation>> showTables(HttpServletRequest request, TableFilter tableFilter){
+    public Result<List<TableInformation>> showTables(HttpServletRequest request, @RequestBody TableFilter tableFilter){
         System.out.println(request.getRequestURL());
         return tableMigrateService.showTables(tableFilter);
     }
