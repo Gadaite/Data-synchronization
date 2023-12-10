@@ -1,0 +1,75 @@
+server:
+  port: 2345
+spring:
+  datasource:
+    dynamic:
+      primary: postgres_gisdata_local
+      strict: false
+      datasource:
+        postgres_gisData_local:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.10:5432/gisdata?stringtype=unspecified
+          username: postgres
+          password: LYP809834049
+
+        postgres_Gadaite_local:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.10:5432/Gadaite?stringtype=unspecified
+          username: postgres
+          password: LYP809834049
+
+        postgres_Personal_local:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.10:5432/Personal?stringtype=unspecified
+          username: postgres
+          password: LYP809834049
+
+        postgres_trajectory_local:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.10:5432/trajectory?stringtype=unspecified
+          username: postgres
+          password: LYP809834049
+
+        postgres_weather_local:
+          driver-class-name: org.postgresql.Driver
+          url: jdbc:postgresql://192.168.1.10:5432/weather?stringtype=unspecified
+          username: postgres
+          password: LYP809834049
+
+        mysql_cetc_local:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.1.10:3306/CETC10S?useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: LYP809834049
+
+        mysql_hive_local:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.1.10:3306/hive?useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: LYP809834049
+
+        mysql_datasync_local:
+          driver-class-name: com.mysql.cj.jdbc.Driver
+          url: jdbc:mysql://192.168.1.10:3306/datasync?useUnicode=true&characterEncoding=utf-8
+          username: root
+          password: LYP809834049
+
+        hive_gis_local:
+          driver-class-name: org.apache.hive.jdbc.HiveDriver
+          url: jdbc:hive2://192.168.1.10:10000/gis
+          username: root
+          password: LYP809834049
+
+        hive_personalization_local:
+          driver-class-name: org.apache.hive.jdbc.HiveDriver
+          url: jdbc:hive2://192.168.1.10:10000/personalinformation
+          username: root
+          password: LYP809834049
+
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: DataSync.mapper
+  mapper-locations: classpath*:/mapper/**/*.xml
