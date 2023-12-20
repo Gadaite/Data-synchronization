@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/tableMigrate")
@@ -42,5 +43,18 @@ public class TableMigrateController {
     public Result<List<TableInformation>> showTables(HttpServletRequest request, @RequestBody TableFilter tableFilter){
         System.out.println(request.getRequestURL());
         return tableMigrateService.showTables(tableFilter);
+    }
+
+    @GetMapping("readTable")
+    @ApiOperation("读取表(部分数据表数据量大,必须使用指定条目数读取)")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "sourceDatabase",value = "源数据库",dataType = "String",required = true),
+            @ApiImplicitParam(name = "sourceDatabaseType",value = "源数据库类型",dataType = "String",required = true),
+            @ApiImplicitParam(name = "sourceTable",value = "源数据库表",dataType = "String",required = true),
+            @ApiImplicitParam(name = "count",value = "数据条目数",dataType = "String",required = true),
+    })
+    public Result<List<Map<String,Object>>> readTable(HttpServletRequest request, String sourceDatabase, String sourceDatabaseType, String sourceTable, String count){
+        System.out.println(request.getRequestURL());
+        return tableMigrateService.readTable(sourceDatabase,sourceDatabaseType,sourceTable,Integer.parseInt(count));
     }
 }

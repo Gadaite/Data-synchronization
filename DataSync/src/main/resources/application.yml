@@ -73,3 +73,10 @@ mybatis-plus:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   type-aliases-package: DataSync.mapper
   mapper-locations: classpath*:/mapper/**/*.xml
+
+spark:
+  cores: local[*]
+  appName: DataSync
+  logLevel: INFO
+  ui:
+    port: 4040
